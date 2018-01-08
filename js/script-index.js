@@ -13,14 +13,14 @@ function printNews() {
 * Función que se encarga de pintar TODAS las recetas que tengan 
 * marcado el atributo "highlighted" como TRUE
 */
-var recetas = [];
+var recipe = [];
 function renderHighlightedRecipes(recipesArray) {
   for(var i in recipesArray) {
     if(recipesArray[i].highlighted == true){
-      recetas.push(recipesArray[i]);
+      recipe.push(recipesArray[i]);
     }
   }
-  renderRecipe(recetas);
+  renderRecipe(recipe);
 }
 
 /*
@@ -30,7 +30,24 @@ function renderHighlightedRecipes(recipesArray) {
 * archivo "templates/templates-recipe.html"
 */
 function renderRecipe(recipe) {
-
+  for(var i in recipe) {
+    var titleRecipe = recipe[i].title;
+    var authorName = recipe[i].source.name;
+    var image = recipe[i].name;
+    //console.log(titleRecipe, authorName, image);
+    $('.list-recipes').append('<a class="item-recipe" href="#">' +
+                                '<span class="attribution">'+
+                                  '<span class="title-recipe">'+ titleRecipe +'</span>' +
+                                  '<span class="metadata-recipe">'+
+                                    '<span class="author-recipe">'+ authorName +'</span>' +
+                                    '<span class="bookmarks-recipe">' +
+                                      '<span class="icon-bookmark"></span>' +
+                                    '</span>' +
+                                  '</span>' +
+                                '</span>' +
+                                '<img src="img/recipes/320x350/' + image + '.jpg' + '"/>' +
+                              '</a>');
+  }
 	console.log('Voy a pintar la receta: ', recipe);
 }
 
