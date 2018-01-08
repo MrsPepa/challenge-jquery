@@ -1,3 +1,3 @@
 $(document).ready(function(){
-	$('.js-menu').hide();
+	$('.js-menu').hide();//ocultar menu
 })
